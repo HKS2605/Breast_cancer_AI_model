@@ -1,0 +1,21 @@
+# Ignore Data and Models (Too big for GitHub)
+data/
+models/
+
+# Ignore Python System files
+__pycache__/
+*.py[cod]
+
+# Ignore Environment folders
+bc_ai/
+venv/
+env/
+.env
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
