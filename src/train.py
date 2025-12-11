@@ -11,8 +11,8 @@ from dataset import get_dataloaders
 
 # --- CONFIGURATION (Tuned for RTX 3050 6GB) ---
 BATCH_SIZE = 16        # Keep small for VRAM
-LEARNING_RATE = 0.001  # Standard starting rate
-NUM_EPOCHS = 20        # Enough to see good results
+LEARNING_RATE = 0.0001  # chamged the learning rate to 0.0001
+NUM_EPOCHS = 50        # increased number of epochs for better training
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def build_model(num_classes=3):
@@ -29,7 +29,7 @@ def build_model(num_classes=3):
     # FREEZE the early layers (feature extractor)
     # This prevents us from destroying the pre-trained knowledge
     for param in model.features.parameters():
-        param.requires_grad = False
+        param.requires_grad = True # Set to True to fine-tune the feature extractor
         
     # REPLACE the final "head" (classifier)
     # EfficientNet's classifier is a Sequential block. We replace the last Linear layer.
